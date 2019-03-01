@@ -33,16 +33,17 @@
 #seperatorLine {
   stroke-width: 7;
   fill: deepskyblue;
-}
+  opacity: 0;}
 
 #seperatorEndLeft{
   r:3;
   fill: deepskyblue;
+  opacity: 0;
 }
 #seperatorEndRight{
   r:3;
   fill: deepskyblue;
-}
+  opacity: 0;}
 
 #clockLabel {
   font-size: 80;

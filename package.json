@@ -1,6 +1,6 @@
 {
   "fitbit": {
-    "appUUID": "aa2ef146-e1c9-403c-a17b-0011ceec7d12",
+    "appUUID": "e46ab0ef-e4e8-48bf-8037-df2908cb755c",
     "appType": "clockface",
     "appDisplayName": "ForecastTime Beta",
     "iconFile": "resources/icon.png",
@@ -29,6 +29,9 @@
     }
   },
   "devDependencies": {
-    "@fitbit/sdk": "~1.0.0"
+    "@fitbit/sdk": "^1.0.6"
+  },
+  "dependencies": {
+    "@fitbit/sdk-cli": "^1.5.0"
   }
 }

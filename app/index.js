@@ -426,6 +426,7 @@ hrm.onreading = function() {
   // Peek the current sensor values
   //console.log("Current heart rate: " + hrm.heartRate);
   let hrLabel = document.getElementById("hrLabel");
+
   let strings = allStrings.getStrings(myLocale, "clockData");
   
   if (!settings.lowColor)
@@ -461,9 +462,9 @@ hrm.onreading = function() {
       hrLabel.style.fill = settings.lowColor; // #F83C40
     }
     if (settings.rhrToggle || !user.restingHeartRate)
-      hrLabel.text = `${hrm.heartRate} ${strings["bpm"]}`;
+      hrLabel.text = `${hrm.heartRate}`;
     else
-      hrLabel.text = `(${user.restingHeartRate}) ${hrm.heartRate} ${strings["bpm"]}`;
+      hrLabel.text = `(${user.restingHeartRate}) ${hrm.heartRate}`;
   }
 
 }
@@ -471,6 +472,10 @@ hrm.onreading = function() {
 function updateClockData() {
  
   let stepsLabel = document.getElementById("stepsLabel");
+  let stairsLabel = document.getElementById("stairsLabel");
+  let activeLabel = document.getElementById("activeLabel");
+
+
   if (deviceType == "Versa")
     let calsLabel = document.getElementById("calsLabel");
   let strings = allStrings.getStrings(myLocale, "clockData");
@@ -486,6 +491,9 @@ function updateClockData() {
   
   
   stepsLabel.style.fill = 'white';
+  stairsLabel.style.fill = 'white';
+  activeLabel.style.fill = 'white';
+
   if (deviceType == "Versa")
     calsLabel.style.fill = 'white';
 
@@ -493,7 +501,13 @@ function updateClockData() {
     
   stepsLabel.style.fill = util.goalToColor(todayActivity.adjusted.steps ? todayActivity.adjusted.steps: 0, goals.steps, 
                                            settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
-  stepsLabel.text = `${(todayActivity.adjusted.steps ? todayActivity.adjusted.steps: 0).toLocaleString()} ${strings["steps"]}`;
+  stepsLabel.text = `${(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0).toLocaleString()}`;
+  stairsLabel.style.fill = util.goalToColor(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0, goals.elevationGain, 
+                                           settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
+  stairsLabel.text = `${(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0).toLocaleString()}`;
+  activeLabel.style.fill = util.goalToColor(todayActivity.adjusted.activeMinutes ? todayActivity.adjusted.activeMinutes: 0, goals.activeMinutes, 
+    settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
+  activeLabel.text = `${(todayActivity.adjusted.activeMinutes ? todayActivity.adjusted.activeMinutes: 0).toLocaleString()}`;
   if (deviceType == "Versa") {
     calsLabel.style.fill = util.goalToColor(todayActivity.adjusted.calories ? todayActivity.adjusted.calories: 0, goals.calories, 
                                            settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
