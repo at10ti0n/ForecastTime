@@ -501,7 +501,7 @@ function updateClockData() {
     
   stepsLabel.style.fill = util.goalToColor(todayActivity.adjusted.steps ? todayActivity.adjusted.steps: 0, goals.steps, 
                                            settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
-  stepsLabel.text = `${(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0).toLocaleString()}`;
+  stepsLabel.text = `${(todayActivity.adjusted.steps ? todayActivity.adjusted.steps: 0).toLocaleString()}`;
   stairsLabel.style.fill = util.goalToColor(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0, goals.elevationGain, 
                                            settings.lowColor, settings.medColor, settings.highColor, settings.comColor);
   stairsLabel.text = `${(todayActivity.adjusted.elevationGain ? todayActivity.adjusted.elevationGain: 0).toLocaleString()}`;
